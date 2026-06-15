@@ -6,7 +6,11 @@
 # See: https://github.com/github/gitignore/tree/main/Global
 #
 .utmp/
+<<<<<<< HEAD
+[Ll]ibrary/
+=======
 /[Ll]ibrary/
+>>>>>>> origin
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
@@ -103,4 +107,8 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 # Auto-generated cache in Assets folder
+<<<<<<< HEAD
 /[Aa]ssets/[Ss]ceneDependencyCache*
+=======
+/[Aa]ssets/[Ss]ceneDependencyCache*
+>>>>>>> origin
