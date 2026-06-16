@@ -10,6 +10,9 @@
 extern void InstantPlacementController_Update_m77D1143FD97BEBD54C55C5BB487F824E67269074 (void);
 extern void InstantPlacementController_TryPlace_m997687BE8828A3C171F4C0B55D03CDEE797999FC (void);
 extern void InstantPlacementController__ctor_m4BB3B3569403752EC164FEC139954AEB77C44BA3 (void);
+extern void RosConnectionCheck_Start_m9DE2621504B5ABE08450F2D76B2423998DDB572E (void);
+extern void RosConnectionCheck_Update_m011F6086F43EFAA5F2B409599FCCF7B56796613C (void);
+extern void RosConnectionCheck__ctor_m7901460B772244D39C9B8728E04AC6F2CB7854FC (void);
 extern void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (void);
 extern void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
@@ -71,11 +74,14 @@ extern void PositionServiceResponse__ctor_m480BD8CDC6092E7D995624334E547A22AC818
 extern void PositionServiceResponse_SerializeTo_m7ED00B11DEED48A9010B9FE90378547CC27BACCB (void);
 extern void PositionServiceResponse_ToString_mFB2D004FD497B11D2B5D14DB9FB5508D424EB171 (void);
 extern void PositionServiceResponse_Register_m052964CC6C156D4A11F03ED644BA62689851217E (void);
-static Il2CppMethodPointer s_methodPointers[64] = 
+static Il2CppMethodPointer s_methodPointers[67] = 
 {
 	InstantPlacementController_Update_m77D1143FD97BEBD54C55C5BB487F824E67269074,
 	InstantPlacementController_TryPlace_m997687BE8828A3C171F4C0B55D03CDEE797999FC,
 	InstantPlacementController__ctor_m4BB3B3569403752EC164FEC139954AEB77C44BA3,
+	RosConnectionCheck_Start_m9DE2621504B5ABE08450F2D76B2423998DDB572E,
+	RosConnectionCheck_Update_m011F6086F43EFAA5F2B409599FCCF7B56796613C,
+	RosConnectionCheck__ctor_m7901460B772244D39C9B8728E04AC6F2CB7854FC,
 	Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6,
 	Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
@@ -138,10 +144,13 @@ static Il2CppMethodPointer s_methodPointers[64] =
 	PositionServiceResponse_ToString_mFB2D004FD497B11D2B5D14DB9FB5508D424EB171,
 	PositionServiceResponse_Register_m052964CC6C156D4A11F03ED644BA62689851217E,
 };
-static const int32_t s_InvokerIndices[64] = 
+static const int32_t s_InvokerIndices[67] = 
 {
 	20762,
 	8383,
+	20762,
+	20762,
+	20762,
 	20762,
 	20762,
 	20762,
@@ -209,7 +218,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	64,
+	67,
 	s_methodPointers,
 	0,
 	NULL,

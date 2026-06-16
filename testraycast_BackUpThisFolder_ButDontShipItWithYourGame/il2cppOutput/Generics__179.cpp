@@ -24251,7 +24251,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RegisterMember_1_EndInvoke_m495556B305E8
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 127127
+// Method Definition Index: 127130
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RegistryEntry_1__ctor_m25EEF82571E807E3BD8607D13CB9BD787A576B96_gshared (RegistryEntry_1_t400D6FC50DC6F761E4CA1DE59FE05A577F1C72EA* __this, const RuntimeMethod* method) 
 {
 	{
@@ -24267,7 +24267,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RegistryEntry_1__ctor_m25EEF82571E807E3B
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
-// Method Definition Index: 127127
+// Method Definition Index: 127130
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void RegistryEntry_1__ctor_mA50D4848952FFF8645F7D8EE021AFF66B8626230_gshared (RegistryEntry_1_tFC81AA1EC5032A2BD41D3BA54858ECC2020CA9C1* __this, const RuntimeMethod* method) 
 {
 	{
