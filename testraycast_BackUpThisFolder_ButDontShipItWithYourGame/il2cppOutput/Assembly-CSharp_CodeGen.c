@@ -7,6 +7,7 @@
 
 
 
+extern void InstantPlacementController_Start_mAE249F268FD25A5C5EC70E088363A99411FFD25D (void);
 extern void InstantPlacementController_Update_m77D1143FD97BEBD54C55C5BB487F824E67269074 (void);
 extern void InstantPlacementController_TryPlace_m997687BE8828A3C171F4C0B55D03CDEE797999FC (void);
 extern void InstantPlacementController__ctor_m4BB3B3569403752EC164FEC139954AEB77C44BA3 (void);
@@ -74,8 +75,17 @@ extern void PositionServiceResponse__ctor_m480BD8CDC6092E7D995624334E547A22AC818
 extern void PositionServiceResponse_SerializeTo_m7ED00B11DEED48A9010B9FE90378547CC27BACCB (void);
 extern void PositionServiceResponse_ToString_mFB2D004FD497B11D2B5D14DB9FB5508D424EB171 (void);
 extern void PositionServiceResponse_Register_m052964CC6C156D4A11F03ED644BA62689851217E (void);
-static Il2CppMethodPointer s_methodPointers[67] = 
+extern void HitPosMsg_get_RosMessageName_m0BDDF5480D4FAF58E6F49B66B6EC826F85C3EBB7 (void);
+extern void HitPosMsg__ctor_mB01B64BB065FE6C022AD11DAA514D7C04C3FB542 (void);
+extern void HitPosMsg__ctor_m1511A6A40F6DE3A6D4A38561A165528DA030D9A4 (void);
+extern void HitPosMsg_Deserialize_m48C36E64406A3DF568F2E5514850654D8CA33D22 (void);
+extern void HitPosMsg__ctor_mEE68C0E8B082C2B3EB15609AC24E224BF291ECE4 (void);
+extern void HitPosMsg_SerializeTo_m63E18AF5E621DA37EECDE204BBC3B06256A48A42 (void);
+extern void HitPosMsg_ToString_m773953B405A318C9BDC5D4E20C2BDCD4A5EF7E94 (void);
+extern void HitPosMsg_Register_m8B6682F785260FFC9616AFF346E1AAC7F9B7722A (void);
+static Il2CppMethodPointer s_methodPointers[76] = 
 {
+	InstantPlacementController_Start_mAE249F268FD25A5C5EC70E088363A99411FFD25D,
 	InstantPlacementController_Update_m77D1143FD97BEBD54C55C5BB487F824E67269074,
 	InstantPlacementController_TryPlace_m997687BE8828A3C171F4C0B55D03CDEE797999FC,
 	InstantPlacementController__ctor_m4BB3B3569403752EC164FEC139954AEB77C44BA3,
@@ -143,9 +153,18 @@ static Il2CppMethodPointer s_methodPointers[67] =
 	PositionServiceResponse_SerializeTo_m7ED00B11DEED48A9010B9FE90378547CC27BACCB,
 	PositionServiceResponse_ToString_mFB2D004FD497B11D2B5D14DB9FB5508D424EB171,
 	PositionServiceResponse_Register_m052964CC6C156D4A11F03ED644BA62689851217E,
+	HitPosMsg_get_RosMessageName_m0BDDF5480D4FAF58E6F49B66B6EC826F85C3EBB7,
+	HitPosMsg__ctor_mB01B64BB065FE6C022AD11DAA514D7C04C3FB542,
+	HitPosMsg__ctor_m1511A6A40F6DE3A6D4A38561A165528DA030D9A4,
+	HitPosMsg_Deserialize_m48C36E64406A3DF568F2E5514850654D8CA33D22,
+	HitPosMsg__ctor_mEE68C0E8B082C2B3EB15609AC24E224BF291ECE4,
+	HitPosMsg_SerializeTo_m63E18AF5E621DA37EECDE204BBC3B06256A48A42,
+	HitPosMsg_ToString_m773953B405A318C9BDC5D4E20C2BDCD4A5EF7E94,
+	HitPosMsg_Register_m8B6682F785260FFC9616AFF346E1AAC7F9B7722A,
 };
-static const int32_t s_InvokerIndices[67] = 
+static const int32_t s_InvokerIndices[76] = 
 {
+	20762,
 	20762,
 	8383,
 	20762,
@@ -213,12 +232,20 @@ static const int32_t s_InvokerIndices[67] =
 	15872,
 	20518,
 	34143,
+	20518,
+	20762,
+	3917,
+	32176,
+	15872,
+	15872,
+	20518,
+	34143,
 };
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	67,
+	76,
 	s_methodPointers,
 	0,
 	NULL,
