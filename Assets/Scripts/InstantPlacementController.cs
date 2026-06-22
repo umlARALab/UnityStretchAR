@@ -16,13 +16,15 @@ public class InstantPlacementController : MonoBehaviour
     public string rosIP = "192.168.10.3";
     public int rosPort = 10000;
 
-    public string rosTopicName = "quest_hit_position";
+    public string objectPosTopic = "quest_hit_point";
+    public string stretchPosTopic = "quest_stretch_align";
     
     private void Start()
     {
         ros = ROSConnection.GetOrCreateInstance();
 
-        ros.RegisterPublisher<HitPosMsg>(rosTopicName);
+        ros.RegisterPublisher<HitPosMsg>(objectPosTopic);  // publisher 0
+        ros.RegisterPublisher<HitPosMsg>(stretchPosTopic); // publisher 1
     }
 
     private void Update()
@@ -37,17 +39,16 @@ public class InstantPlacementController : MonoBehaviour
 
         if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
-            TryPlace(ray, hit);
+            TryPlace(ray, hit, 0);
+        } else if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger)) {
+            TryPlace(ray, hit, 1);
         }
     }
 
-    private void TryPlace(Ray ray, Meta.XR.EnvironmentRaycastHit hit)
+    private void TryPlace(Ray ray, Meta.XR.EnvironmentRaycastHit hit, int publisher)
     {
         var objectToPlace = Instantiate(prefabToPlace);
-        objectToPlace.transform.SetPositionAndRotation(
-            hit.point,
-            Quaternion.LookRotation(hit.normal, Vector3.up)
-        );
+        Destroy(objectToPlace, 5.0f);
 
         HitPosMsg hitMsg = new HitPosMsg(
             hit.point.x,
@@ -55,7 +56,26 @@ public class InstantPlacementController : MonoBehaviour
             hit.point.z
         );
 
-        ros.Publish(rosTopicName, hitMsg);
+        if (publisher == 0) // object localization
+        {
+            ros.Publish(objectPosTopic, hitMsg);
+        }
+        else if (publisher == 1) // stretch align
+        {
+            objectToPlace.GetComponent<Renderer>().material.color = Color.blue;
+
+            ros.Publish(stretchPosTopic, hitMsg);
+        }
+
+        objectToPlace.transform.SetPositionAndRotation(
+            hit.point,
+            Quaternion.LookRotation(hit.normal, Vector3.up)
+        );
+
+
+
+
+
 
         if (MRUK.Instance?.IsWorldLockActive != true)
         {

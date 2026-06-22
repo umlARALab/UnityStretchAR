@@ -9,11 +9,20 @@
 
 extern void InstantPlacementController_Start_mAE249F268FD25A5C5EC70E088363A99411FFD25D (void);
 extern void InstantPlacementController_Update_m77D1143FD97BEBD54C55C5BB487F824E67269074 (void);
-extern void InstantPlacementController_TryPlace_m997687BE8828A3C171F4C0B55D03CDEE797999FC (void);
+extern void InstantPlacementController_TryPlace_mD1C56E7463353FC66B993223FA27F6A963710F41 (void);
 extern void InstantPlacementController__ctor_m4BB3B3569403752EC164FEC139954AEB77C44BA3 (void);
 extern void RosConnectionCheck_Start_m9DE2621504B5ABE08450F2D76B2423998DDB572E (void);
 extern void RosConnectionCheck_Update_m011F6086F43EFAA5F2B409599FCCF7B56796613C (void);
 extern void RosConnectionCheck__ctor_m7901460B772244D39C9B8728E04AC6F2CB7854FC (void);
+extern void TargetSelectFade_Start_m83ECFD15C4E453827D15F76C4545EDEE21E89325 (void);
+extern void TargetSelectFade_SelfDestruct_mE1F8DDF30DE1B13F96F52B6752C586D5DE1D522E (void);
+extern void TargetSelectFade__ctor_m2DD3EDC88C422BA55E7D38199135474465FA1605 (void);
+extern void U3CSelfDestructU3Ed__1__ctor_m1ADABC25A0EC8B4637DCF86D6D86708438243E8B (void);
+extern void U3CSelfDestructU3Ed__1_System_IDisposable_Dispose_mBDDA67BA71DF2575DA0408EA71BF9C24997C7321 (void);
+extern void U3CSelfDestructU3Ed__1_MoveNext_m33884244F845FD9E0B95CCDC882432B17EA8D6D5 (void);
+extern void U3CSelfDestructU3Ed__1_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mF2315E4130129F0240BBF6764038C37B520D8F1A (void);
+extern void U3CSelfDestructU3Ed__1_System_Collections_IEnumerator_Reset_mD177C4C868DED7EF87E97A87829CEA963DB15746 (void);
+extern void U3CSelfDestructU3Ed__1_System_Collections_IEnumerator_get_Current_mF06AC6C8FA0FA6335E0AF00EFBE984B0710B9C96 (void);
 extern void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (void);
 extern void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
@@ -83,15 +92,24 @@ extern void HitPosMsg__ctor_mEE68C0E8B082C2B3EB15609AC24E224BF291ECE4 (void);
 extern void HitPosMsg_SerializeTo_m63E18AF5E621DA37EECDE204BBC3B06256A48A42 (void);
 extern void HitPosMsg_ToString_m773953B405A318C9BDC5D4E20C2BDCD4A5EF7E94 (void);
 extern void HitPosMsg_Register_m8B6682F785260FFC9616AFF346E1AAC7F9B7722A (void);
-static Il2CppMethodPointer s_methodPointers[76] = 
+static Il2CppMethodPointer s_methodPointers[85] = 
 {
 	InstantPlacementController_Start_mAE249F268FD25A5C5EC70E088363A99411FFD25D,
 	InstantPlacementController_Update_m77D1143FD97BEBD54C55C5BB487F824E67269074,
-	InstantPlacementController_TryPlace_m997687BE8828A3C171F4C0B55D03CDEE797999FC,
+	InstantPlacementController_TryPlace_mD1C56E7463353FC66B993223FA27F6A963710F41,
 	InstantPlacementController__ctor_m4BB3B3569403752EC164FEC139954AEB77C44BA3,
 	RosConnectionCheck_Start_m9DE2621504B5ABE08450F2D76B2423998DDB572E,
 	RosConnectionCheck_Update_m011F6086F43EFAA5F2B409599FCCF7B56796613C,
 	RosConnectionCheck__ctor_m7901460B772244D39C9B8728E04AC6F2CB7854FC,
+	TargetSelectFade_Start_m83ECFD15C4E453827D15F76C4545EDEE21E89325,
+	TargetSelectFade_SelfDestruct_mE1F8DDF30DE1B13F96F52B6752C586D5DE1D522E,
+	TargetSelectFade__ctor_m2DD3EDC88C422BA55E7D38199135474465FA1605,
+	U3CSelfDestructU3Ed__1__ctor_m1ADABC25A0EC8B4637DCF86D6D86708438243E8B,
+	U3CSelfDestructU3Ed__1_System_IDisposable_Dispose_mBDDA67BA71DF2575DA0408EA71BF9C24997C7321,
+	U3CSelfDestructU3Ed__1_MoveNext_m33884244F845FD9E0B95CCDC882432B17EA8D6D5,
+	U3CSelfDestructU3Ed__1_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mF2315E4130129F0240BBF6764038C37B520D8F1A,
+	U3CSelfDestructU3Ed__1_System_Collections_IEnumerator_Reset_mD177C4C868DED7EF87E97A87829CEA963DB15746,
+	U3CSelfDestructU3Ed__1_System_Collections_IEnumerator_get_Current_mF06AC6C8FA0FA6335E0AF00EFBE984B0710B9C96,
 	Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6,
 	Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
@@ -162,15 +180,24 @@ static Il2CppMethodPointer s_methodPointers[76] =
 	HitPosMsg_ToString_m773953B405A318C9BDC5D4E20C2BDCD4A5EF7E94,
 	HitPosMsg_Register_m8B6682F785260FFC9616AFF346E1AAC7F9B7722A,
 };
-static const int32_t s_InvokerIndices[76] = 
+static const int32_t s_InvokerIndices[85] = 
 {
 	20762,
 	20762,
-	8383,
+	3897,
 	20762,
 	20762,
 	20762,
 	20762,
+	20762,
+	20518,
+	20762,
+	15784,
+	20762,
+	20273,
+	20518,
+	20762,
+	20518,
 	20762,
 	20762,
 	34185,
@@ -234,7 +261,7 @@ static const int32_t s_InvokerIndices[76] =
 	34143,
 	20518,
 	20762,
-	3917,
+	3918,
 	32176,
 	15872,
 	15872,
@@ -245,7 +272,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	76,
+	85,
 	s_methodPointers,
 	0,
 	NULL,
