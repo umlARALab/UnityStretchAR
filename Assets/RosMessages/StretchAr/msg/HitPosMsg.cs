@@ -13,46 +13,40 @@ namespace RosMessageTypes.StretchAr
         public const string k_RosMessageName = "stretch_ar/HitPos";
         public override string RosMessageName => k_RosMessageName;
 
-        public float x;
-        public float y;
-        public float z;
+        public Geometry.Vector3Msg hit_position;
+        public Geometry.Vector3Msg controller_position;
 
         public HitPosMsg()
         {
-            this.x = 0.0f;
-            this.y = 0.0f;
-            this.z = 0.0f;
+            this.hit_position = new Geometry.Vector3Msg();
+            this.controller_position = new Geometry.Vector3Msg();
         }
 
-        public HitPosMsg(float x, float y, float z)
+        public HitPosMsg(Geometry.Vector3Msg hit_position, Geometry.Vector3Msg controller_position)
         {
-            this.x = x;
-            this.y = y;
-            this.z = z;
+            this.hit_position = hit_position;
+            this.controller_position = controller_position;
         }
 
         public static HitPosMsg Deserialize(MessageDeserializer deserializer) => new HitPosMsg(deserializer);
 
         private HitPosMsg(MessageDeserializer deserializer)
         {
-            deserializer.Read(out this.x);
-            deserializer.Read(out this.y);
-            deserializer.Read(out this.z);
+            this.hit_position = Geometry.Vector3Msg.Deserialize(deserializer);
+            this.controller_position = Geometry.Vector3Msg.Deserialize(deserializer);
         }
 
         public override void SerializeTo(MessageSerializer serializer)
         {
-            serializer.Write(this.x);
-            serializer.Write(this.y);
-            serializer.Write(this.z);
+            serializer.Write(this.hit_position);
+            serializer.Write(this.controller_position);
         }
 
         public override string ToString()
         {
             return "HitPosMsg: " +
-            "\nx: " + x.ToString() +
-            "\ny: " + y.ToString() +
-            "\nz: " + z.ToString();
+            "\nhit_position: " + hit_position.ToString() +
+            "\ncontroller_position: " + controller_position.ToString();
         }
 
 #if UNITY_EDITOR

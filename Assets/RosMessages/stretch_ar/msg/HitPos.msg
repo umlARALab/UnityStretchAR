@@ -1,3 +1,2 @@
-float32 x
-float32 y
-float32 z
+geometry_msgs/Vector3 hit_position
+geometry_msgs/Vector3 controller_position
