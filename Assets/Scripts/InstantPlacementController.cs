@@ -2,38 +2,49 @@
 using Meta.XR.MRUtilityKit;
 using Meta.XR;
 using UnityEngine;
+using UnityEngine.UI;
+using PassthroughCameraSamples.CameraViewer;
+using System.Collections;
+
 using Unity.Robotics.ROSTCPConnector;
 using RosMessageTypes.StretchAr;
 using RosMessageTypes.Geometry;
-using PassthroughCameraSamples.CameraViewer;
-
+using RosMessageTypes.Std;
+using RosMessageTypes.Sensor;
 
 public class InstantPlacementController : MonoBehaviour
 {
     public Transform rightControllerAnchor;
     public GameObject prefabToPlace;
     public EnvironmentRaycastManager raycastManager;
-    public LineRenderer rotationLine;
 
     ROSConnection ros;
     public string rosIP = "192.168.10.3";
     public int rosPort = 10000;
 
-    public Camera cam;
-
     public string objectPosTopic = "quest_hit_point";
     public string stretchPosTopic = "quest_stretch_align";
-    // public string camFrameTopic = "quest_camera";
+    public string stopRobotTopic = "stop_robot";
+    public string camFrameTopic = "quest_camera";
+
+    // private PassthroughCameraAccess camInstant;
 
     private bool isHolding = false;
     private Vector3 startPoint;
-    
+
     private void Start()
     {
         ros = ROSConnection.GetOrCreateInstance();
 
-        ros.RegisterPublisher<HitPosMsg>(objectPosTopic);  // publisher 0
-        ros.RegisterPublisher<HitPosMsg>(stretchPosTopic); // publisher 1
+        // camInstant = Instantiate(camAccess);
+        // camInstant.enabled = true;
+        // camAccess = FindAnyObjectByType<PassthroughCameraAccess>();
+
+        ros.RegisterPublisher<HitPosMsg>(objectPosTopic);  
+        ros.RegisterPublisher<HitPosMsg>(stretchPosTopic); 
+        ros.RegisterPublisher<BoolMsg>(stopRobotTopic);
+
+        ros.RegisterPublisher<ImageMsg>(camFrameTopic);
     }
 
     private void Update()
@@ -49,6 +60,7 @@ public class InstantPlacementController : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
             TryPlace(ray, hit);
+            PubImageCapture();
         } else if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger)) {
             isHolding = true;
             startPoint = initLine(ray, hit);
@@ -57,6 +69,12 @@ public class InstantPlacementController : MonoBehaviour
             isHolding = false;
             drawLine(ray, hit, startPoint);
         }
+
+        if (OVRInput.GetDown(OVRInput.RawButton.B)) {
+            BoolMsg callToStop = new BoolMsg(true);
+
+            ros.Publish(stopRobotTopic, callToStop);
+        }
     }
 
     private void TryPlace(Ray ray, Meta.XR.EnvironmentRaycastHit hit)
@@ -64,6 +82,7 @@ public class InstantPlacementController : MonoBehaviour
         var objectToPlace = Instantiate(prefabToPlace);
         Destroy(objectToPlace, 5.0f);
 
+        // hit position and controller position to publish
         Vector3Msg hitVec = new Vector3Msg( // unity frames don't align with typical frames
             hit.point.z, // z
             -hit.point.x, // -x
@@ -93,6 +112,25 @@ public class InstantPlacementController : MonoBehaviour
         {
             objectToPlace.AddComponent<OVRSpatialAnchor>();
         }
+    }
+
+    private void PubImageCapture()
+    {
+        RawImage rawCam = GetComponentInChildren<RawImage>();
+
+        Texture2D imgTexture = rawCam.texture as Texture2D;
+        byte[] rawImgData = imgTexture.GetRawTextureData();
+
+        ImageMsg imgMsg = new ImageMsg
+        {
+            height = (uint)imgTexture.height,
+            width = (uint)imgTexture.width,
+            encoding = "rgb8",
+            is_bigendian = 0,
+            step = (uint)(imgTexture.width * 3),
+            data = rawImgData
+        };
+        ros.Publish(camFrameTopic, imgMsg);
     }
 
     private Vector3 initLine(Ray ray, Meta.XR.EnvironmentRaycastHit hit)

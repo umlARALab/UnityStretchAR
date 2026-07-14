@@ -14,18 +14,18 @@ namespace RosMessageTypes.StretchAr
         public override string RosMessageName => k_RosMessageName;
 
         public Geometry.Vector3Msg hit_position;
-        public Geometry.Vector3Msg controller_position;
+        public Geometry.Vector3Msg end_position;
 
         public HitPosMsg()
         {
             this.hit_position = new Geometry.Vector3Msg();
-            this.controller_position = new Geometry.Vector3Msg();
+            this.end_position = new Geometry.Vector3Msg();
         }
 
-        public HitPosMsg(Geometry.Vector3Msg hit_position, Geometry.Vector3Msg controller_position)
+        public HitPosMsg(Geometry.Vector3Msg hit_position, Geometry.Vector3Msg end_position)
         {
             this.hit_position = hit_position;
-            this.controller_position = controller_position;
+            this.end_position = end_position;
         }
 
         public static HitPosMsg Deserialize(MessageDeserializer deserializer) => new HitPosMsg(deserializer);
@@ -33,20 +33,20 @@ namespace RosMessageTypes.StretchAr
         private HitPosMsg(MessageDeserializer deserializer)
         {
             this.hit_position = Geometry.Vector3Msg.Deserialize(deserializer);
-            this.controller_position = Geometry.Vector3Msg.Deserialize(deserializer);
+            this.end_position = Geometry.Vector3Msg.Deserialize(deserializer);
         }
 
         public override void SerializeTo(MessageSerializer serializer)
         {
             serializer.Write(this.hit_position);
-            serializer.Write(this.controller_position);
+            serializer.Write(this.end_position);
         }
 
         public override string ToString()
         {
             return "HitPosMsg: " +
             "\nhit_position: " + hit_position.ToString() +
-            "\ncontroller_position: " + controller_position.ToString();
+            "\nend_position: " + end_position.ToString();
         }
 
 #if UNITY_EDITOR

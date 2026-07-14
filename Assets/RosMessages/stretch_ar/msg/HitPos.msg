@@ -1,2 +1,2 @@
 geometry_msgs/Vector3 hit_position
-geometry_msgs/Vector3 controller_position
+geometry_msgs/Vector3 end_position
