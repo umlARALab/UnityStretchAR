@@ -284,9 +284,7 @@
           },
           {
             "name": "LineRenderer",
-            "scenes": [
-              "Assets/Scenes/InitScene.unity"
-            ],
+            "scenes": [],
             "dependencyType": 0,
             "icon": null
           },
@@ -484,9 +482,7 @@
           },
           {
             "name": "SpriteRenderer",
-            "scenes": [
-              "Assets/Scenes/InitScene.unity"
-            ],
+            "scenes": [],
             "dependencyType": 0,
             "icon": null
           },
@@ -996,7 +992,9 @@
           },
           {
             "name": "CapsuleCollider",
-            "scenes": [],
+            "scenes": [
+              "Assets/Scenes/InitScene.unity"
+            ],
             "dependencyType": 0,
             "icon": null
           },

@@ -2,9 +2,16 @@
 using Meta.XR.MRUtilityKit;
 using Meta.XR;
 using UnityEngine;
+using UnityEngine.UI;
+using PassthroughCameraSamples.CameraViewer;
+using System.Collections;
+
 using Unity.Robotics.ROSTCPConnector;
 using RosMessageTypes.StretchAr;
-
+using RosMessageTypes.Geometry;
+using RosMessageTypes.Std;
+using RosMessageTypes.Sensor;
+using Unity.Robotics.ROSTCPConnector.MessageGeneration;
 
 public class InstantPlacementController : MonoBehaviour
 {
@@ -13,18 +20,36 @@ public class InstantPlacementController : MonoBehaviour
     public EnvironmentRaycastManager raycastManager;
 
     ROSConnection ros;
-    public string rosIP = "192.168.10.3";
-    public int rosPort = 10000;
 
     public string objectPosTopic = "quest_hit_point";
     public string stretchPosTopic = "quest_stretch_align";
-    
+    public string stopRobotTopic = "stop_robot";
+    public string camFrameTopic = "quest_camera";
+
+    // private PassthroughCameraAccess camInstant;
+    public CameraViewerManager camManager;
+
+    private bool isHolding = false;
+    private Vector3 startPoint;
+
     private void Start()
     {
         ros = ROSConnection.GetOrCreateInstance();
 
-        ros.RegisterPublisher<HitPosMsg>(objectPosTopic);  // publisher 0
-        ros.RegisterPublisher<HitPosMsg>(stretchPosTopic); // publisher 1
+        // camInstant = Instantiate(camAccess);
+        // camInstant.enabled = true;
+        // camAccess = FindAnyObjectByType<PassthroughCameraAccess>();
+
+        if (camManager == null)
+        {
+            Debug.Log("no cam manager");
+        }
+
+        ros.RegisterPublisher<HitPosMsg>(objectPosTopic);  
+        ros.RegisterPublisher<HitPosMsg>(stretchPosTopic); 
+        ros.RegisterPublisher<BoolMsg>(stopRobotTopic);
+
+        ros.RegisterPublisher<ImageMsg>(camFrameTopic);
     }
 
     private void Update()
@@ -39,47 +64,139 @@ public class InstantPlacementController : MonoBehaviour
 
         if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
-            TryPlace(ray, hit, 0);
+            TryPlace(ray, hit);
+
+            PubImageCapture();
         } else if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger)) {
-            TryPlace(ray, hit, 1);
+            isHolding = true;
+            startPoint = initLine(ray, hit);
+        } else if (isHolding == true && OVRInput.GetUp(OVRInput.RawButton.RHandTrigger))
+        {
+            isHolding = false;
+            drawLine(ray, hit, startPoint);
+        }
+
+        if (OVRInput.GetDown(OVRInput.RawButton.B)) {
+            BoolMsg callToStop = new BoolMsg(true);
+
+            ros.Publish(stopRobotTopic, callToStop);
         }
     }
 
-    private void TryPlace(Ray ray, Meta.XR.EnvironmentRaycastHit hit, int publisher)
+    private void TryPlace(Ray ray, Meta.XR.EnvironmentRaycastHit hit)
     {
         var objectToPlace = Instantiate(prefabToPlace);
         Destroy(objectToPlace, 5.0f);
 
-        HitPosMsg hitMsg = new HitPosMsg(
-            hit.point.x,
-            hit.point.y,
-            hit.point.z
+        // hit position and controller position to publish
+        Vector3Msg hitVec = new Vector3Msg( // unity frames don't align with typical frames
+            hit.point.z, // z
+            -hit.point.x, // -x
+            hit.point.y  // y
         );
 
-        if (publisher == 0) // object localization
-        {
-            ros.Publish(objectPosTopic, hitMsg);
-        }
-        else if (publisher == 1) // stretch align
-        {
-            objectToPlace.GetComponent<Renderer>().material.color = Color.blue;
+        Vector3Msg conVec = new Vector3Msg(
+            rightControllerAnchor.position.z,
+            -rightControllerAnchor.position.x,
+            rightControllerAnchor.position.y
+        );
 
-            ros.Publish(stretchPosTopic, hitMsg);
-        }
+        // having both the hit point and the position of the camera will help us get transforms between each component
+        HitPosMsg hitMsg = new HitPosMsg( 
+            hitVec, // hit position
+            conVec  // controller position
+        );
+
+        ros.Publish(objectPosTopic, hitMsg);
 
         objectToPlace.transform.SetPositionAndRotation(
             hit.point,
             Quaternion.LookRotation(hit.normal, Vector3.up)
         );
 
-
-
-
-
-
         if (MRUK.Instance?.IsWorldLockActive != true)
         {
             objectToPlace.AddComponent<OVRSpatialAnchor>();
         }
+    }
+
+    private void PubImageCapture()
+    {
+        int camWidth = camManager.m_image.texture.width;
+        int camHeight = camManager.m_image.texture.height;
+
+        // get camera texture
+        Texture2D imgTexture = new Texture2D(camWidth, camHeight, TextureFormat.RGB24, false);
+        Graphics.CopyTexture(camManager.m_image.texture, imgTexture);
+
+        // set up image msg to publish to robot
+        HeaderMsg questHeader = new HeaderMsg();
+        questHeader.frame_id = "quest";
+        uint sec = (uint)Mathf.FloorToInt(Time.time);
+        uint nano = (uint)((Time.time - sec) * 1e9f);
+        questHeader.stamp = new RosMessageTypes.BuiltinInterfaces.TimeMsg();
+
+        ImageMsg imgMsg = imgTexture.ToImageMsg(questHeader);
+
+        ros.Publish(camFrameTopic, imgMsg);
+    }
+
+    private Vector3 initLine(Ray ray, Meta.XR.EnvironmentRaycastHit hit)
+    {
+        Vector3 startPt = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+        var objectToPlace = Instantiate(prefabToPlace);
+        objectToPlace.GetComponent<Renderer>().material.color = Color.blue;
+        Destroy(objectToPlace, 5.0f);
+
+        objectToPlace.transform.SetPositionAndRotation(
+            startPt,
+            Quaternion.LookRotation(hit.normal, Vector3.up)
+        );
+
+        // change ray color as indicator that user is drawing line
+        /*
+        Transform rayLine = transform.Find("RaycastLine");
+        rayLine.GetComponent<LineRenderer>().startColor = Color.blue;
+        rayLine.GetComponent<LineRenderer>().endColor = Color.blue;
+        */
+
+        return startPt;
+    }
+    private void drawLine(Ray ray, Meta.XR.EnvironmentRaycastHit hit, Vector3 startPt)
+    {
+        // change ray color as indicator that user is done drawing line
+        /*
+        GameObject rayViz = GameObject.Find("RaycastVisualize");
+        LineRenderer rayLine = rayViz.GetComponentsInChildren<LineRenderer>()[0];
+        rayLine.material.color = Color.white;
+        */
+
+        Vector3Msg endMsg = new Vector3Msg(
+            hit.point.z,
+            -hit.point.x, 
+            startPt.y // match height with starting point
+        );
+
+        Vector3Msg startMsg = new Vector3Msg(
+            startPt.z,
+            -startPt.x, 
+            startPt.y
+        );
+
+        var objectToPlace1 = Instantiate(prefabToPlace);
+        objectToPlace1.GetComponent<Renderer>().material.color = Color.blue;
+
+        objectToPlace1.transform.SetPositionAndRotation(
+            hit.point,
+            Quaternion.LookRotation(hit.normal, Vector3.up)
+        );
+        Destroy(objectToPlace1, 5.0f);
+
+        HitPosMsg hitMsg = new HitPosMsg(
+            startMsg,
+            endMsg
+        );
+
+        ros.Publish(stretchPosTopic, hitMsg);
     }
 }

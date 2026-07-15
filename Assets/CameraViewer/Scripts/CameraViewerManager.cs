@@ -14,7 +14,7 @@ namespace PassthroughCameraSamples.CameraViewer
     {
         [SerializeField] private PassthroughCameraAccess m_cameraAccess;
         [SerializeField] private Text m_debugText;
-        [SerializeField] private RawImage m_image;
+        [SerializeField] public RawImage m_image;
 
         private IEnumerator Start()
         {

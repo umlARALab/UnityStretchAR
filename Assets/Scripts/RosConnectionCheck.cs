@@ -8,8 +8,6 @@ using TMPro;
 public class RosConnectionCheck : MonoBehaviour
 {
     ROSConnection ros;
-    public string rosIP = "192.168.10.3";
-    public int rosPort = 10000;
 
     public Image connectionImg;
     public TMPro.TextMeshProUGUI connectionText;
@@ -20,8 +18,6 @@ public class RosConnectionCheck : MonoBehaviour
     {
         // initialize ros connection
         ros = ROSConnection.GetOrCreateInstance();
-        ros.RosIPAddress = rosIP;
-        ros.RosPort = rosPort;
 
         ros.Connect();
     }
