@@ -51103,12 +51103,11 @@ struct InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78  : p
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___prefabToPlace;
 	EnvironmentRaycastManager_t1F3C36273A969637037143CD5B7883964210A823* ___raycastManager;
 	ROSConnection_t371E5878B6D006817633E6A700C14135690FD89E* ___ros;
-	String_t* ___rosIP;
-	int32_t ___rosPort;
 	String_t* ___objectPosTopic;
 	String_t* ___stretchPosTopic;
 	String_t* ___stopRobotTopic;
 	String_t* ___camFrameTopic;
+	CameraViewerManager_t1502BCE61CCC23064C7FFF4F0AB2E4904B12B766* ___camManager;
 	bool ___isHolding;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___startPoint;
 };
@@ -51507,8 +51506,6 @@ struct RoomMeshEvent_tC58B03BDC6917085A244B8E30A6B8FE278FA18B1  : public MonoBeh
 struct RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
 	ROSConnection_t371E5878B6D006817633E6A700C14135690FD89E* ___ros;
-	String_t* ___rosIP;
-	int32_t ___rosPort;
 	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___connectionImg;
 	TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___connectionText;
 };

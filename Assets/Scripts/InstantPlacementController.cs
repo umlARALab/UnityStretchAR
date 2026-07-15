@@ -11,6 +11,7 @@ using RosMessageTypes.StretchAr;
 using RosMessageTypes.Geometry;
 using RosMessageTypes.Std;
 using RosMessageTypes.Sensor;
+using Unity.Robotics.ROSTCPConnector.MessageGeneration;
 
 public class InstantPlacementController : MonoBehaviour
 {
@@ -19,8 +20,6 @@ public class InstantPlacementController : MonoBehaviour
     public EnvironmentRaycastManager raycastManager;
 
     ROSConnection ros;
-    public string rosIP = "192.168.10.3";
-    public int rosPort = 10000;
 
     public string objectPosTopic = "quest_hit_point";
     public string stretchPosTopic = "quest_stretch_align";
@@ -28,6 +27,7 @@ public class InstantPlacementController : MonoBehaviour
     public string camFrameTopic = "quest_camera";
 
     // private PassthroughCameraAccess camInstant;
+    public CameraViewerManager camManager;
 
     private bool isHolding = false;
     private Vector3 startPoint;
@@ -39,6 +39,11 @@ public class InstantPlacementController : MonoBehaviour
         // camInstant = Instantiate(camAccess);
         // camInstant.enabled = true;
         // camAccess = FindAnyObjectByType<PassthroughCameraAccess>();
+
+        if (camManager == null)
+        {
+            Debug.Log("no cam manager");
+        }
 
         ros.RegisterPublisher<HitPosMsg>(objectPosTopic);  
         ros.RegisterPublisher<HitPosMsg>(stretchPosTopic); 
@@ -60,6 +65,7 @@ public class InstantPlacementController : MonoBehaviour
         if (OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
             TryPlace(ray, hit);
+
             PubImageCapture();
         } else if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger)) {
             isHolding = true;
@@ -116,20 +122,22 @@ public class InstantPlacementController : MonoBehaviour
 
     private void PubImageCapture()
     {
-        RawImage rawCam = GetComponentInChildren<RawImage>();
+        int camWidth = camManager.m_image.texture.width;
+        int camHeight = camManager.m_image.texture.height;
 
-        Texture2D imgTexture = rawCam.texture as Texture2D;
-        byte[] rawImgData = imgTexture.GetRawTextureData();
+        // get camera texture
+        Texture2D imgTexture = new Texture2D(camWidth, camHeight, TextureFormat.RGB24, false);
+        Graphics.CopyTexture(camManager.m_image.texture, imgTexture);
 
-        ImageMsg imgMsg = new ImageMsg
-        {
-            height = (uint)imgTexture.height,
-            width = (uint)imgTexture.width,
-            encoding = "rgb8",
-            is_bigendian = 0,
-            step = (uint)(imgTexture.width * 3),
-            data = rawImgData
-        };
+        // set up image msg to publish to robot
+        HeaderMsg questHeader = new HeaderMsg();
+        questHeader.frame_id = "quest";
+        uint sec = (uint)Mathf.FloorToInt(Time.time);
+        uint nano = (uint)((Time.time - sec) * 1e9f);
+        questHeader.stamp = new RosMessageTypes.BuiltinInterfaces.TimeMsg();
+
+        ImageMsg imgMsg = imgTexture.ToImageMsg(questHeader);
+
         ros.Publish(camFrameTopic, imgMsg);
     }
 

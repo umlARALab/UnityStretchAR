@@ -15896,12 +15896,11 @@ struct InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78  : p
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___prefabToPlace;
 	EnvironmentRaycastManager_t1F3C36273A969637037143CD5B7883964210A823* ___raycastManager;
 	ROSConnection_t371E5878B6D006817633E6A700C14135690FD89E* ___ros;
-	String_t* ___rosIP;
-	int32_t ___rosPort;
 	String_t* ___objectPosTopic;
 	String_t* ___stretchPosTopic;
 	String_t* ___stopRobotTopic;
 	String_t* ___camFrameTopic;
+	CameraViewerManager_t1502BCE61CCC23064C7FFF4F0AB2E4904B12B766* ___camManager;
 	bool ___isHolding;
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 ___startPoint;
 };
@@ -16188,8 +16187,6 @@ struct RoomMeshEvent_tC58B03BDC6917085A244B8E30A6B8FE278FA18B1  : public MonoBeh
 struct RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771  : public MonoBehaviour_t532A11E69716D348D8AA7F854AFCBFCB8AD17F71
 {
 	ROSConnection_t371E5878B6D006817633E6A700C14135690FD89E* ___ros;
-	String_t* ___rosIP;
-	int32_t ___rosPort;
 	Image_tBC1D03F63BF71132E9A5E472B8742F172A011E7E* ___connectionImg;
 	TextMeshProUGUI_t101091AF4B578BB534C92E9D1EEAF0611636D957* ___connectionText;
 };
@@ -20336,12 +20333,12 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable16061[7] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable16062[5] = 
 {
 	static_cast<int32_t>(offsetof(SceneModelLoader_t0700D3846D2295208599A6ED8C95906845321C1F, ___SceneObjectPrefab)),static_cast<int32_t>(offsetof(SceneModelLoader_t0700D3846D2295208599A6ED8C95906845321C1F, ____trackingSpace)),static_cast<int32_t>(offsetof(SceneModelLoader_t0700D3846D2295208599A6ED8C95906845321C1F, ____loadMeshes)),static_cast<int32_t>(offsetof(SceneModelLoader_t0700D3846D2295208599A6ED8C95906845321C1F, ____loadPlanes)),static_cast<int32_t>(offsetof(SceneModelLoader_t0700D3846D2295208599A6ED8C95906845321C1F, ____loadVolumes)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable16063[12] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable16063[11] = 
 {
-	static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___rightControllerAnchor)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___prefabToPlace)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___raycastManager)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___ros)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___rosIP)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___rosPort)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___objectPosTopic)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___stretchPosTopic)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___stopRobotTopic)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___camFrameTopic)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___isHolding)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___startPoint)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable16064[5] = 
+	static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___rightControllerAnchor)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___prefabToPlace)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___raycastManager)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___ros)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___objectPosTopic)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___stretchPosTopic)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___stopRobotTopic)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___camFrameTopic)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___camManager)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___isHolding)),static_cast<int32_t>(offsetof(InstantPlacementController_t17BCCD1109460A00BAE6AFA625891CED4EBA6E78, ___startPoint)),};
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable16064[3] = 
 {
-	static_cast<int32_t>(offsetof(RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771, ___ros)),static_cast<int32_t>(offsetof(RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771, ___rosIP)),static_cast<int32_t>(offsetof(RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771, ___rosPort)),static_cast<int32_t>(offsetof(RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771, ___connectionImg)),static_cast<int32_t>(offsetof(RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771, ___connectionText)),};
+	static_cast<int32_t>(offsetof(RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771, ___ros)),static_cast<int32_t>(offsetof(RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771, ___connectionImg)),static_cast<int32_t>(offsetof(RosConnectionCheck_t3078B002E9E7C28B873B79D521DA85DE47B3E771, ___connectionText)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable16065[3] = 
 {
 	static_cast<int32_t>(offsetof(U3CSelfDestructU3Ed__1_tE259CCCD2D998A09150D3BD89F625E1A0DC4BD85, ___U3CU3E1__state)),static_cast<int32_t>(offsetof(U3CSelfDestructU3Ed__1_tE259CCCD2D998A09150D3BD89F625E1A0DC4BD85, ___U3CU3E2__current)),static_cast<int32_t>(offsetof(U3CSelfDestructU3Ed__1_tE259CCCD2D998A09150D3BD89F625E1A0DC4BD85, ___U3CU3E4__this)),};

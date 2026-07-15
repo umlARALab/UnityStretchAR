@@ -119,6 +119,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &8645149 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3196867086813413058, guid: 0e9e59a9b5566489fad35afecaeac3a9, type: 3}
+  m_PrefabInstance: {fileID: 650129698}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8bf844e5c0cc42f1bac2aae9e5944f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &204163283
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +171,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 14700640367701650, guid: 5a2f36462424f514b9f2879a50bc54d3, type: 3}
       propertyPath: m_RosIPAddress
-      value: 192.168.10.3
+      value: 192.168.10.5
       objectReference: {fileID: 0}
     - target: {fileID: 3225923084206979546, guid: 5a2f36462424f514b9f2879a50bc54d3, type: 3}
       propertyPath: m_Name
@@ -671,12 +682,13 @@ MonoBehaviour:
   rightControllerAnchor: {fileID: 1783634162}
   prefabToPlace: {fileID: 946036894}
   raycastManager: {fileID: 645138159}
-  rosIP: 192.168.10.3
+  rosIP: 192.168.10.5
   rosPort: 10000
   objectPosTopic: quest_hit_point
   stretchPosTopic: quest_stretch_align
   stopRobotTopic: stop_robot
   camFrameTopic: quest_camera
+  camManager: {fileID: 8645149}
 --- !u!114 &645138159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -827,7 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91557295ccec381468c14fd252ce0520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  rosIP: 192.168.10.3
+  rosIP: 192.168.10.5
   rosPort: 10000
   connectionImg: {fileID: 446189595}
   connectionText: {fileID: 1188431205}
@@ -912,7 +924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &712457196
