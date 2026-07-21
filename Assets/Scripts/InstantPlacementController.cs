@@ -21,10 +21,10 @@ public class InstantPlacementController : MonoBehaviour
 
     ROSConnection ros;
 
-    public string objectPosTopic = "quest_hit_point";
-    public string stretchPosTopic = "quest_stretch_align";
-    public string stopRobotTopic = "stop_robot";
-    public string camFrameTopic = "quest_camera";
+    private string objectPosTopic = "quest_hit_point";
+    private string stretchPosTopic = "quest_stretch_align";
+    private string stopRobotTopic = "stop_robot";
+    private string camFrameTopic = "quest_camera";
 
     // private PassthroughCameraAccess camInstant;
     public CameraViewerManager camManager;
@@ -125,6 +125,8 @@ public class InstantPlacementController : MonoBehaviour
         int camWidth = camManager.m_image.texture.width;
         int camHeight = camManager.m_image.texture.height;
 
+        Debug.Log(camManager.m_image.texture.dimension);
+
         // get camera texture
         Texture2D imgTexture = new Texture2D(camWidth, camHeight, TextureFormat.RGB24, false);
         Rect rect = new Rect(0, 0, camWidth, camHeight);
@@ -139,7 +141,6 @@ public class InstantPlacementController : MonoBehaviour
         RenderTexture.active = null;
         Destroy(render);
         render = null;
-        // Debug.Log(testImg.GetRawTextureData());
 
         // set up image msg to publish to robot
         HeaderMsg questHeader = new HeaderMsg();

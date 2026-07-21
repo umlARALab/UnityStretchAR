@@ -161,6 +161,94 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1725324856}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &207994542
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 235023511294263602, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_Name
+      value: RaycastVisualize
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.25887
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.22986
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3842729349416280855, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6629190526919491893, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      propertyPath: _spaceLocator
+      value: 
+      objectReference: {fileID: 207994544}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 235023511294263602, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 207994544}
+  m_SourcePrefab: {fileID: 100100000, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+--- !u!1 &207994543 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 235023511294263602, guid: 5400ab16316c9f54a9e95d12a6a2eeb5, type: 3}
+  m_PrefabInstance: {fileID: 207994542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &207994544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207994543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9138f94feb089c541ae7cb3a954f1d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: meta.xr.mrutilitykit::Meta.XR.MRUtilityKit.BuildingBlocks.PointAndLocate
+  PreferredSurfaceOrientation: 14
+  UseCustomSize: 0
+  CustomSize: {x: 0.25, y: 0.25, z: 0.25}
+  _onSpaceLocateCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  _raycastOrigin: {fileID: 1783634162}
 --- !u!1001 &285766777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -643,8 +731,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 645138156}
-  - component: {fileID: 645138158}
   - component: {fileID: 645138159}
+  - component: {fileID: 645138158}
   m_Layer: 0
   m_Name: RayCastTarget
   m_TagString: Untagged
@@ -682,10 +770,6 @@ MonoBehaviour:
   rightControllerAnchor: {fileID: 1783634162}
   prefabToPlace: {fileID: 946036894}
   raycastManager: {fileID: 645138159}
-  objectPosTopic: quest_hit_point
-  stretchPosTopic: quest_stretch_align
-  stopRobotTopic: stop_robot
-  camFrameTopic: quest_camera
   camManager: {fileID: 8645149}
 --- !u!114 &645138159
 MonoBehaviour:
@@ -699,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8affdff7ba47d892cc734baac9ac71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: meta.xr.mrutilitykit::Meta.XR.EnvironmentRaycastManager
-  CustomTrackingSpace: {fileID: 1783634162}
+  CustomTrackingSpace: {fileID: 0}
 --- !u!1001 &650129698
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2414,3 +2498,4 @@ SceneRoots:
   - {fileID: 650129698}
   - {fileID: 1409662694}
   - {fileID: 1737286517}
+  - {fileID: 207994542}

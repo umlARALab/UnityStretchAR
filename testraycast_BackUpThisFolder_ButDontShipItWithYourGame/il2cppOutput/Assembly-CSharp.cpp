@@ -459,6 +459,7 @@ IL2CPP_EXTERN_C RuntimeClass* StringBuilder_t_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Task_t751C4CC3ECD055BABA8A0B6A5DFBB4283DCA8572_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* TextureDimension_t8D7148B9168256EE1E9AF91378ABA148888CE642_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* TimeMsg_t7C6235DCE221FB43FFCE9B44FC873F869D67B985_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CSelfDestructU3Ed__1_tE259CCCD2D998A09150D3BD89F625E1A0DC4BD85_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* U3CStartU3Ed__3_t0E495DE9A6C6C157307ED9C3A9AAE1A215E07007_il2cpp_TypeInfo_var;
@@ -2052,6 +2053,10 @@ struct TextRenderFlags_tE023FF398ECFE57A1DBC6FD2A1AF4AE9620F6E1C
 	int32_t ___value__;
 };
 struct TextWrappingModes_t982BC65D6DA703E73C04B99286285ECD3DDF207E 
+{
+	int32_t ___value__;
+};
+struct TextureDimension_t8D7148B9168256EE1E9AF91378ABA148888CE642 
 {
 	int32_t ___value__;
 };
@@ -17889,12 +17894,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstantPlacementController_PubImageCaptu
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Graphics_t99CD970FFEA58171C70F54DF0C06D315BD452F2C_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TextureDimension_t8D7148B9168256EE1E9AF91378ABA148888CE642_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&TimeMsg_t7C6235DCE221FB43FFCE9B44FC873F869D67B985_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral59835463557DE8AC444311112EC05645D84A7039);
 		s_Il2CppMethodInitialized = true;
@@ -17929,80 +17936,94 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstantPlacementController_PubImageCaptu
 		int32_t L_7;
 		L_7 = VirtualFuncInvoker0< int32_t >::Invoke(7, L_6);
 		V_1 = L_7;
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:129>
-		int32_t L_8 = V_0;
-		int32_t L_9 = V_1;
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_10 = (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4*)il2cpp_codegen_object_new(Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
-		Texture2D__ctor_mECF60A9EC0638EC353C02C8E99B6B465D23BE917(L_10, L_8, L_9, 3, (bool)0, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:130>
-		int32_t L_11 = V_0;
-		int32_t L_12 = V_1;
-		il2cpp_codegen_runtime_class_init_inline(Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D_il2cpp_TypeInfo_var);
-		Rect__ctor_m18C3033D135097BEE424AAA68D91C706D2647F23_inline((&V_2), (0.0f), (0.0f), ((float)L_11), ((float)L_12), NULL);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:128>
+		CameraViewerManager_t1502BCE61CCC23064C7FFF4F0AB2E4904B12B766* L_8 = __this->___camManager;
+		NullCheck(L_8);
+		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_9 = L_8->___m_image;
+		NullCheck(L_9);
+		Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* L_10;
+		L_10 = RawImage_get_texture_m84CCFDF78F6886F73EBE5A7C78D6E9C3CA903813_inline(L_9, NULL);
+		NullCheck(L_10);
+		int32_t L_11;
+		L_11 = VirtualFuncInvoker0< int32_t >::Invoke(9, L_10);
+		int32_t L_12 = L_11;
+		RuntimeObject* L_13 = Box(TextureDimension_t8D7148B9168256EE1E9AF91378ABA148888CE642_il2cpp_TypeInfo_var, &L_12);
+		il2cpp_codegen_runtime_class_init_inline(Debug_t8394C7EEAECA3689C2C9B9DE9C7166D73596276F_il2cpp_TypeInfo_var);
+		Debug_Log_m87A9A3C761FF5C43ED8A53B16190A53D08F818BB(L_13, NULL);
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:131>
-		int32_t L_13 = V_0;
-		int32_t L_14 = V_1;
-		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_15 = (RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)il2cpp_codegen_object_new(RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27_il2cpp_TypeInfo_var);
-		RenderTexture__ctor_m45EACC89DDF408948889586516B3CA7AA8B73BFA(L_15, L_13, L_14, ((int32_t)24), NULL);
-		V_3 = L_15;
+		int32_t L_14 = V_0;
+		int32_t L_15 = V_1;
+		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_16 = (Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4*)il2cpp_codegen_object_new(Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4_il2cpp_TypeInfo_var);
+		Texture2D__ctor_mECF60A9EC0638EC353C02C8E99B6B465D23BE917(L_16, L_14, L_15, 3, (bool)0, NULL);
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:132>
-		CameraViewerManager_t1502BCE61CCC23064C7FFF4F0AB2E4904B12B766* L_16 = __this->___camManager;
-		NullCheck(L_16);
-		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_17 = L_16->___m_image;
-		NullCheck(L_17);
-		Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* L_18;
-		L_18 = RawImage_get_texture_m84CCFDF78F6886F73EBE5A7C78D6E9C3CA903813_inline(L_17, NULL);
-		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_19 = V_3;
-		il2cpp_codegen_runtime_class_init_inline(Graphics_t99CD970FFEA58171C70F54DF0C06D315BD452F2C_il2cpp_TypeInfo_var);
-		Graphics_Blit_m8D99E16B74C7D3C8F79F4F142C59DB6B38114504(L_18, L_19, NULL);
+		int32_t L_17 = V_0;
+		int32_t L_18 = V_1;
+		il2cpp_codegen_runtime_class_init_inline(Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D_il2cpp_TypeInfo_var);
+		Rect__ctor_m18C3033D135097BEE424AAA68D91C706D2647F23_inline((&V_2), (0.0f), (0.0f), ((float)L_17), ((float)L_18), NULL);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:133>
+		int32_t L_19 = V_0;
+		int32_t L_20 = V_1;
+		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_21 = (RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)il2cpp_codegen_object_new(RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27_il2cpp_TypeInfo_var);
+		RenderTexture__ctor_m45EACC89DDF408948889586516B3CA7AA8B73BFA(L_21, L_19, L_20, ((int32_t)24), NULL);
+		V_3 = L_21;
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:134>
-		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_20 = V_3;
-		RenderTexture_set_active_m5EE8E2327EF9B306C1425014CC34C41A8384E7AB(L_20, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:136>
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_21 = L_10;
-		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_22 = V_2;
-		NullCheck(L_21);
-		Texture2D_ReadPixels_m6B45DF7C051BF599C72ED09691F21A6C769EEBD9(L_21, L_22, 0, 0, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:137>
-		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_23 = L_21;
+		CameraViewerManager_t1502BCE61CCC23064C7FFF4F0AB2E4904B12B766* L_22 = __this->___camManager;
+		NullCheck(L_22);
+		RawImage_tFF12F7DB574FBDC1863CF607C7A12A5D9F8D6179* L_23 = L_22->___m_image;
 		NullCheck(L_23);
-		Texture2D_Apply_mA014182C9EE0BBF6EEE3B286854F29E50EB972DC(L_23, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:139>
-		RenderTexture_set_active_m5EE8E2327EF9B306C1425014CC34C41A8384E7AB((RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)NULL, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:140>
-		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_24 = V_3;
-		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
-		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_24, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:141>
-		V_3 = (RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)NULL;
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:145>
-		HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F* L_25 = (HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F*)il2cpp_codegen_object_new(HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F_il2cpp_TypeInfo_var);
-		HeaderMsg__ctor_m9875EE1A4A1EB19683FAD900592DE728BF02FFE7(L_25, NULL);
-		V_4 = L_25;
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:146>
-		HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F* L_26 = V_4;
-		NullCheck(L_26);
-		L_26->___frame_id = _stringLiteral59835463557DE8AC444311112EC05645D84A7039;
-		Il2CppCodeGenWriteBarrier((void**)(&L_26->___frame_id), (void*)_stringLiteral59835463557DE8AC444311112EC05645D84A7039);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:149>
-		HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F* L_27 = V_4;
-		TimeMsg_t7C6235DCE221FB43FFCE9B44FC873F869D67B985* L_28 = (TimeMsg_t7C6235DCE221FB43FFCE9B44FC873F869D67B985*)il2cpp_codegen_object_new(TimeMsg_t7C6235DCE221FB43FFCE9B44FC873F869D67B985_il2cpp_TypeInfo_var);
-		TimeMsg__ctor_mC1FF4A24E3B2AA42FEED34B9B25D5022C7E89AFB(L_28, NULL);
+		Texture_t791CBB51219779964E0E8A2ED7C1AA5F92A4A700* L_24;
+		L_24 = RawImage_get_texture_m84CCFDF78F6886F73EBE5A7C78D6E9C3CA903813_inline(L_23, NULL);
+		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_25 = V_3;
+		il2cpp_codegen_runtime_class_init_inline(Graphics_t99CD970FFEA58171C70F54DF0C06D315BD452F2C_il2cpp_TypeInfo_var);
+		Graphics_Blit_m8D99E16B74C7D3C8F79F4F142C59DB6B38114504(L_24, L_25, NULL);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:136>
+		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_26 = V_3;
+		RenderTexture_set_active_m5EE8E2327EF9B306C1425014CC34C41A8384E7AB(L_26, NULL);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:138>
+		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_27 = L_16;
+		Rect_tA04E0F8A1830E767F40FB27ECD8D309303571F0D L_28 = V_2;
 		NullCheck(L_27);
-		L_27->___stamp = L_28;
-		Il2CppCodeGenWriteBarrier((void**)(&L_27->___stamp), (void*)L_28);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:151>
-		HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F* L_29 = V_4;
-		ImageMsg_t8F381BA380AED63D6630511439F01DA33BDEA350* L_30;
-		L_30 = MessageExtensions_ToImageMsg_m5C92B76945BA9006E0B0721F053AB52B15099ED0(L_23, L_29, NULL);
-		V_5 = L_30;
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:153>
-		ROSConnection_t371E5878B6D006817633E6A700C14135690FD89E* L_31 = __this->___ros;
-		String_t* L_32 = __this->___camFrameTopic;
-		ImageMsg_t8F381BA380AED63D6630511439F01DA33BDEA350* L_33 = V_5;
-		NullCheck(L_31);
-		ROSConnection_Publish_m8CC2D4EFEAEFE8B1B1A8A177C3E03916F852C49C(L_31, L_32, L_33, NULL);
+		Texture2D_ReadPixels_m6B45DF7C051BF599C72ED09691F21A6C769EEBD9(L_27, L_28, 0, 0, NULL);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:139>
+		Texture2D_tE6505BC111DD8A424A9DBE8E05D7D09E11FFFCF4* L_29 = L_27;
+		NullCheck(L_29);
+		Texture2D_Apply_mA014182C9EE0BBF6EEE3B286854F29E50EB972DC(L_29, NULL);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:141>
+		RenderTexture_set_active_m5EE8E2327EF9B306C1425014CC34C41A8384E7AB((RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)NULL, NULL);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:142>
+		RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27* L_30 = V_3;
+		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
+		Object_Destroy_mE97D0A766419A81296E8D4E5C23D01D3FE91ACBB(L_30, NULL);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:143>
+		V_3 = (RenderTexture_tBA90C4C3AD9EECCFDDCC632D97C29FAB80D60D27*)NULL;
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:146>
+		HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F* L_31 = (HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F*)il2cpp_codegen_object_new(HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F_il2cpp_TypeInfo_var);
+		HeaderMsg__ctor_m9875EE1A4A1EB19683FAD900592DE728BF02FFE7(L_31, NULL);
+		V_4 = L_31;
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:147>
+		HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F* L_32 = V_4;
+		NullCheck(L_32);
+		L_32->___frame_id = _stringLiteral59835463557DE8AC444311112EC05645D84A7039;
+		Il2CppCodeGenWriteBarrier((void**)(&L_32->___frame_id), (void*)_stringLiteral59835463557DE8AC444311112EC05645D84A7039);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:150>
+		HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F* L_33 = V_4;
+		TimeMsg_t7C6235DCE221FB43FFCE9B44FC873F869D67B985* L_34 = (TimeMsg_t7C6235DCE221FB43FFCE9B44FC873F869D67B985*)il2cpp_codegen_object_new(TimeMsg_t7C6235DCE221FB43FFCE9B44FC873F869D67B985_il2cpp_TypeInfo_var);
+		TimeMsg__ctor_mC1FF4A24E3B2AA42FEED34B9B25D5022C7E89AFB(L_34, NULL);
+		NullCheck(L_33);
+		L_33->___stamp = L_34;
+		Il2CppCodeGenWriteBarrier((void**)(&L_33->___stamp), (void*)L_34);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:152>
+		HeaderMsg_t20FAF899863E5D55801979EBD20116585EE94D7F* L_35 = V_4;
+		ImageMsg_t8F381BA380AED63D6630511439F01DA33BDEA350* L_36;
+		L_36 = MessageExtensions_ToImageMsg_m5C92B76945BA9006E0B0721F053AB52B15099ED0(L_29, L_35, NULL);
+		V_5 = L_36;
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:154>
+		ROSConnection_t371E5878B6D006817633E6A700C14135690FD89E* L_37 = __this->___ros;
+		String_t* L_38 = __this->___camFrameTopic;
+		ImageMsg_t8F381BA380AED63D6630511439F01DA33BDEA350* L_39 = V_5;
+		NullCheck(L_37);
+		ROSConnection_Publish_m8CC2D4EFEAEFE8B1B1A8A177C3E03916F852C49C(L_37, L_38, L_39, NULL);
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:155>
 		return;
 	}
 }
@@ -18020,7 +18041,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 	Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 V_0;
 	memset((&V_0), 0, sizeof(V_0));
 	{
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:158>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:159>
 		EnvironmentRaycastHit_t48411C1F5D6A5B396B944EF08230D1C9C1AEE2AE L_0 = ___1_hit;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = L_0.___point;
 		float L_2 = L_1.___x;
@@ -18031,12 +18052,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_7 = L_6.___point;
 		float L_8 = L_7.___z;
 		Vector3__ctor_m376936E6B999EF1ECBE57D990A386303E2283DE0_inline((&V_0), L_2, L_5, L_8, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:159>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:160>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_9 = __this->___prefabToPlace;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_10;
 		L_10 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m10D87C6E0708CA912BBB02555BF7D0FBC5D7A2B3(L_9, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m10D87C6E0708CA912BBB02555BF7D0FBC5D7A2B3_RuntimeMethod_var);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:160>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:161>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_11 = L_10;
 		NullCheck(L_11);
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_12;
@@ -18048,13 +18069,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		L_14 = Color_get_blue_mF04A26CE61D6DA3C0D8B1C4720901B1028C7AB87_inline(NULL);
 		NullCheck(L_13);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_13, L_14, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:161>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:162>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_15 = L_11;
 		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_15, (5.0f), NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:163>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:164>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:165>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:166>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:167>
 		NullCheck(L_15);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_16;
 		L_16 = GameObject_get_transform_m0BC10ADFA1632166AE5544BDF9038A2650C2AE56(L_15, NULL);
@@ -18067,7 +18088,7 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A
 		L_21 = Quaternion_LookRotation_mFB02EDC8F733774DFAC3BEA4B4BB265A228F8307_inline(L_19, L_20, NULL);
 		NullCheck(L_16);
 		Transform_SetPositionAndRotation_m418859BF59086EEAA084FFD6F258A43FAB408F5A(L_16, L_17, L_21, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:175>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:176>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_22 = V_0;
 		return L_22;
 	}
@@ -18088,11 +18109,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstantPlacementController_drawLine_m1C0
 	Vector3Msg_t0D3619E7E7D1941CBED32B5D8D6E4F42D2F8A6CC* V_0 = NULL;
 	HitPosMsg_tDFB5223AD53EA06891AE98B472094A25E05A261F* V_1 = NULL;
 	{
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:186>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:187>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:188>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:189>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:190>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:191>
 		EnvironmentRaycastHit_t48411C1F5D6A5B396B944EF08230D1C9C1AEE2AE L_0 = ___1_hit;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_1 = L_0.___point;
 		float L_2 = L_1.___z;
@@ -18104,11 +18125,11 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstantPlacementController_drawLine_m1C0
 		Vector3Msg_t0D3619E7E7D1941CBED32B5D8D6E4F42D2F8A6CC* L_8 = (Vector3Msg_t0D3619E7E7D1941CBED32B5D8D6E4F42D2F8A6CC*)il2cpp_codegen_object_new(Vector3Msg_t0D3619E7E7D1941CBED32B5D8D6E4F42D2F8A6CC_il2cpp_TypeInfo_var);
 		Vector3Msg__ctor_m50DB4A48180876DC9099D097F9C4D78E1A5D0EBE(L_8, ((double)L_2), ((double)((-L_5))), ((double)L_7), NULL);
 		V_0 = L_8;
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:192>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:193>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:194>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:195>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:196>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:197>
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_9 = ___2_startPt;
 		float L_10 = L_9.___z;
 		Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2 L_11 = ___2_startPt;
@@ -18117,12 +18138,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstantPlacementController_drawLine_m1C0
 		float L_14 = L_13.___y;
 		Vector3Msg_t0D3619E7E7D1941CBED32B5D8D6E4F42D2F8A6CC* L_15 = (Vector3Msg_t0D3619E7E7D1941CBED32B5D8D6E4F42D2F8A6CC*)il2cpp_codegen_object_new(Vector3Msg_t0D3619E7E7D1941CBED32B5D8D6E4F42D2F8A6CC_il2cpp_TypeInfo_var);
 		Vector3Msg__ctor_m50DB4A48180876DC9099D097F9C4D78E1A5D0EBE(L_15, ((double)L_10), ((double)((-L_12))), ((double)L_14), NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:198>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:199>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_16 = __this->___prefabToPlace;
 		il2cpp_codegen_runtime_class_init_inline(Object_tC12DECB6760A7F2CBF65D9DCF18D044C2D97152C_il2cpp_TypeInfo_var);
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_17;
 		L_17 = Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m10D87C6E0708CA912BBB02555BF7D0FBC5D7A2B3(L_16, Object_Instantiate_TisGameObject_t76FEDD663AB33C991A9C9A23129337651094216F_m10D87C6E0708CA912BBB02555BF7D0FBC5D7A2B3_RuntimeMethod_var);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:199>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:200>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_18 = L_17;
 		NullCheck(L_18);
 		Renderer_t320575F223BCB177A982E5DDB5DB19FAA89E7FBF* L_19;
@@ -18134,10 +18155,10 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstantPlacementController_drawLine_m1C0
 		L_21 = Color_get_blue_mF04A26CE61D6DA3C0D8B1C4720901B1028C7AB87_inline(NULL);
 		NullCheck(L_20);
 		Material_set_color_m5C32DEBB215FF9EE35E7B575297D8C2F29CC2A2D(L_20, L_21, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:201>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:202>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:203>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:204>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:205>
 		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_22 = L_18;
 		NullCheck(L_22);
 		Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1* L_23;
@@ -18152,23 +18173,23 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstantPlacementController_drawLine_m1C0
 		L_29 = Quaternion_LookRotation_mFB02EDC8F733774DFAC3BEA4B4BB265A228F8307_inline(L_27, L_28, NULL);
 		NullCheck(L_23);
 		Transform_SetPositionAndRotation_m418859BF59086EEAA084FFD6F258A43FAB408F5A(L_23, L_25, L_29, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:205>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:206>
 		Object_Destroy_m064F2A066491D2DC4FFCFBDBE5FCFFB807A04436(L_22, (5.0f), NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:207>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:208>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:209>
 		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:210>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:211>
 		Vector3Msg_t0D3619E7E7D1941CBED32B5D8D6E4F42D2F8A6CC* L_30 = V_0;
 		HitPosMsg_tDFB5223AD53EA06891AE98B472094A25E05A261F* L_31 = (HitPosMsg_tDFB5223AD53EA06891AE98B472094A25E05A261F*)il2cpp_codegen_object_new(HitPosMsg_tDFB5223AD53EA06891AE98B472094A25E05A261F_il2cpp_TypeInfo_var);
 		HitPosMsg__ctor_mF907A5080CB925CA2758271D9C93C4E33C428561(L_31, L_15, L_30, NULL);
 		V_1 = L_31;
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:212>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:213>
 		ROSConnection_t371E5878B6D006817633E6A700C14135690FD89E* L_32 = __this->___ros;
 		String_t* L_33 = __this->___stretchPosTopic;
 		HitPosMsg_tDFB5223AD53EA06891AE98B472094A25E05A261F* L_34 = V_1;
 		NullCheck(L_32);
 		ROSConnection_Publish_m8CC2D4EFEAEFE8B1B1A8A177C3E03916F852C49C(L_32, L_33, L_34, NULL);
-		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:213>
+		//<source_info:C:/Users/csrobot/Desktop/RosUnityConnection/Assets/Scripts/InstantPlacementController.cs:214>
 		return;
 	}
 }
