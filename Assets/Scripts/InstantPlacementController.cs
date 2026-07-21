@@ -127,13 +127,25 @@ public class InstantPlacementController : MonoBehaviour
 
         // get camera texture
         Texture2D imgTexture = new Texture2D(camWidth, camHeight, TextureFormat.RGB24, false);
-        Graphics.CopyTexture(camManager.m_image.texture, imgTexture);
+        Rect rect = new Rect(0, 0, camWidth, camHeight);
+        RenderTexture render = new RenderTexture(camWidth, camHeight, 24);
+        Graphics.Blit(camManager.m_image.texture, render);
+
+        RenderTexture.active = render;
+
+        imgTexture.ReadPixels(rect, 0, 0);
+        imgTexture.Apply();
+
+        RenderTexture.active = null;
+        Destroy(render);
+        render = null;
+        // Debug.Log(testImg.GetRawTextureData());
 
         // set up image msg to publish to robot
         HeaderMsg questHeader = new HeaderMsg();
         questHeader.frame_id = "quest";
-        uint sec = (uint)Mathf.FloorToInt(Time.time);
-        uint nano = (uint)((Time.time - sec) * 1e9f);
+        // uint sec = (uint)Mathf.FloorToInt(Time.time);
+        // uint nano = (uint)((Time.time - sec) * 1e9f);
         questHeader.stamp = new RosMessageTypes.BuiltinInterfaces.TimeMsg();
 
         ImageMsg imgMsg = imgTexture.ToImageMsg(questHeader);

@@ -171,7 +171,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 14700640367701650, guid: 5a2f36462424f514b9f2879a50bc54d3, type: 3}
       propertyPath: m_RosIPAddress
-      value: 192.168.10.5
+      value: 192.168.10.3
       objectReference: {fileID: 0}
     - target: {fileID: 3225923084206979546, guid: 5a2f36462424f514b9f2879a50bc54d3, type: 3}
       propertyPath: m_Name
@@ -682,8 +682,6 @@ MonoBehaviour:
   rightControllerAnchor: {fileID: 1783634162}
   prefabToPlace: {fileID: 946036894}
   raycastManager: {fileID: 645138159}
-  rosIP: 192.168.10.5
-  rosPort: 10000
   objectPosTopic: quest_hit_point
   stretchPosTopic: quest_stretch_align
   stopRobotTopic: stop_robot
@@ -839,8 +837,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91557295ccec381468c14fd252ce0520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  rosIP: 192.168.10.5
-  rosPort: 10000
   connectionImg: {fileID: 446189595}
   connectionText: {fileID: 1188431205}
 --- !u!114 &687664389
