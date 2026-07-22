@@ -18,13 +18,14 @@ public class InstantPlacementController : MonoBehaviour
     public Transform rightControllerAnchor;
     public GameObject prefabToPlace;
     public EnvironmentRaycastManager raycastManager;
+    public Camera camView;
 
     ROSConnection ros;
 
-    public string objectPosTopic = "quest_hit_point";
-    public string stretchPosTopic = "quest_stretch_align";
-    public string stopRobotTopic = "stop_robot";
-    public string camFrameTopic = "quest_camera";
+    private string objectPosTopic = "quest_hit_point";
+    private string stretchPosTopic = "quest_stretch_align";
+    private string stopRobotTopic = "stop_robot";
+    private string camFrameTopic = "quest_camera";
 
     // private PassthroughCameraAccess camInstant;
     public CameraViewerManager camManager;
@@ -49,7 +50,7 @@ public class InstantPlacementController : MonoBehaviour
         ros.RegisterPublisher<HitPosMsg>(stretchPosTopic); 
         ros.RegisterPublisher<BoolMsg>(stopRobotTopic);
 
-        ros.RegisterPublisher<ImageMsg>(camFrameTopic);
+        ros.RegisterPublisher<ImageTargetMsg>(camFrameTopic);
     }
 
     private void Update()
@@ -66,7 +67,7 @@ public class InstantPlacementController : MonoBehaviour
         {
             TryPlace(ray, hit);
 
-            PubImageCapture();
+            PubImageCapture(hit);
         } else if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger)) {
             isHolding = true;
             startPoint = initLine(ray, hit);
@@ -120,25 +121,44 @@ public class InstantPlacementController : MonoBehaviour
         }
     }
 
-    private void PubImageCapture()
+    private void PubImageCapture(Meta.XR.EnvironmentRaycastHit hit)
     {
         int camWidth = camManager.m_image.texture.width;
         int camHeight = camManager.m_image.texture.height;
 
+        Debug.Log(camManager.m_image.texture.dimension);
+
         // get camera texture
         Texture2D imgTexture = new Texture2D(camWidth, camHeight, TextureFormat.RGB24, false);
-        Graphics.CopyTexture(camManager.m_image.texture, imgTexture);
+        Rect rect = new Rect(0, 0, camWidth, camHeight);
+        RenderTexture render = new RenderTexture(camWidth, camHeight, 24);
+        Graphics.Blit(camManager.m_image.texture, render);
+
+        RenderTexture.active = render;
+
+        imgTexture.ReadPixels(rect, 0, 0);
+        imgTexture.Apply();
+
+        RenderTexture.active = null;
+        Destroy(render);
+        render = null;
 
         // set up image msg to publish to robot
         HeaderMsg questHeader = new HeaderMsg();
         questHeader.frame_id = "quest";
-        uint sec = (uint)Mathf.FloorToInt(Time.time);
-        uint nano = (uint)((Time.time - sec) * 1e9f);
+        // uint sec = (uint)Mathf.FloorToInt(Time.time);
+        // uint nano = (uint)((Time.time - sec) * 1e9f);
         questHeader.stamp = new RosMessageTypes.BuiltinInterfaces.TimeMsg();
 
         ImageMsg imgMsg = imgTexture.ToImageMsg(questHeader);
+        Vector3 targetImgPos = camView.WorldToScreenPoint(hit.point);
+        Vector3Msg imgPosMsg = new Vector3Msg(targetImgPos.x, targetImgPos.y, targetImgPos.z);
+        ImageTargetMsg finalImgMsg = new ImageTargetMsg(
+            imgMsg,
+            imgPosMsg
+        );
 
-        ros.Publish(camFrameTopic, imgMsg);
+        ros.Publish(camFrameTopic, finalImgMsg);
     }
 
     private Vector3 initLine(Ray ray, Meta.XR.EnvironmentRaycastHit hit)
@@ -156,8 +176,8 @@ public class InstantPlacementController : MonoBehaviour
         // change ray color as indicator that user is drawing line
         /*
         Transform rayLine = transform.Find("RaycastLine");
-        rayLine.GetComponent<LineRenderer>().startColor = Color.blue;
-        rayLine.GetComponent<LineRenderer>().endColor = Color.blue;
+        GetComponentInChildren<LineRenderer>().startColor = Color.blue;
+        GetComponentInChildren<LineRenderer>().endColor = Color.blue;
         */
 
         return startPt;
