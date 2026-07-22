@@ -18,6 +18,7 @@ public class InstantPlacementController : MonoBehaviour
     public Transform rightControllerAnchor;
     public GameObject prefabToPlace;
     public EnvironmentRaycastManager raycastManager;
+    public Camera camView;
 
     ROSConnection ros;
 
@@ -49,7 +50,7 @@ public class InstantPlacementController : MonoBehaviour
         ros.RegisterPublisher<HitPosMsg>(stretchPosTopic); 
         ros.RegisterPublisher<BoolMsg>(stopRobotTopic);
 
-        ros.RegisterPublisher<ImageMsg>(camFrameTopic);
+        ros.RegisterPublisher<ImageTargetMsg>(camFrameTopic);
     }
 
     private void Update()
@@ -66,7 +67,7 @@ public class InstantPlacementController : MonoBehaviour
         {
             TryPlace(ray, hit);
 
-            PubImageCapture();
+            PubImageCapture(hit);
         } else if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger)) {
             isHolding = true;
             startPoint = initLine(ray, hit);
@@ -120,7 +121,7 @@ public class InstantPlacementController : MonoBehaviour
         }
     }
 
-    private void PubImageCapture()
+    private void PubImageCapture(Meta.XR.EnvironmentRaycastHit hit)
     {
         int camWidth = camManager.m_image.texture.width;
         int camHeight = camManager.m_image.texture.height;
@@ -150,8 +151,14 @@ public class InstantPlacementController : MonoBehaviour
         questHeader.stamp = new RosMessageTypes.BuiltinInterfaces.TimeMsg();
 
         ImageMsg imgMsg = imgTexture.ToImageMsg(questHeader);
+        Vector3 targetImgPos = camView.WorldToScreenPoint(hit.point);
+        Vector3Msg imgPosMsg = new Vector3Msg(targetImgPos.x, targetImgPos.y, targetImgPos.z);
+        ImageTargetMsg finalImgMsg = new ImageTargetMsg(
+            imgMsg,
+            imgPosMsg
+        );
 
-        ros.Publish(camFrameTopic, imgMsg);
+        ros.Publish(camFrameTopic, finalImgMsg);
     }
 
     private Vector3 initLine(Ray ray, Meta.XR.EnvironmentRaycastHit hit)
@@ -169,8 +176,8 @@ public class InstantPlacementController : MonoBehaviour
         // change ray color as indicator that user is drawing line
         /*
         Transform rayLine = transform.Find("RaycastLine");
-        rayLine.GetComponent<LineRenderer>().startColor = Color.blue;
-        rayLine.GetComponent<LineRenderer>().endColor = Color.blue;
+        GetComponentInChildren<LineRenderer>().startColor = Color.blue;
+        GetComponentInChildren<LineRenderer>().endColor = Color.blue;
         */
 
         return startPt;
