@@ -125,8 +125,18 @@ public class InstantPlacementController : MonoBehaviour
     {
         int camWidth = camManager.m_image.texture.width;
         int camHeight = camManager.m_image.texture.height;
+        Vector3 targetImgPos = camView.WorldToScreenPoint(hit.point);
 
-        Debug.Log(camManager.m_image.texture.dimension);
+        Debug.Log(camManager.m_image.texture.width + "x" + camManager.m_image.texture.height);
+
+        int sightWidth = 3664;
+        int sightHeight = 1920;
+
+        Debug.Log("Raw input: " + targetImgPos.x + " " + targetImgPos.y);
+
+        int posX = (int) targetImgPos.x - ((sightWidth - camWidth) / 2);
+        int posY = (int) targetImgPos.y - ((sightHeight - camHeight) / 2);
+        posY += 80; // y offset
 
         // get camera texture
         Texture2D imgTexture = new Texture2D(camWidth, camHeight, TextureFormat.RGB24, false);
@@ -136,7 +146,13 @@ public class InstantPlacementController : MonoBehaviour
 
         RenderTexture.active = render;
 
+        // Color[] colorArr = new Color[100];
+        // for (int i = 0; i < 100; i++)
+        // {
+        //     colorArr[i] = Color.red;
+        // }
         imgTexture.ReadPixels(rect, 0, 0);
+        // imgTexture.SetPixels(posX, posY, 10, 10, colorArr);
         imgTexture.Apply();
 
         RenderTexture.active = null;
@@ -151,12 +167,15 @@ public class InstantPlacementController : MonoBehaviour
         questHeader.stamp = new RosMessageTypes.BuiltinInterfaces.TimeMsg();
 
         ImageMsg imgMsg = imgTexture.ToImageMsg(questHeader);
-        Vector3 targetImgPos = camView.WorldToScreenPoint(hit.point);
-        Vector3Msg imgPosMsg = new Vector3Msg(targetImgPos.x, targetImgPos.y, targetImgPos.z);
+        
+ 
+        
+        Vector3Msg imgPosMsg = new Vector3Msg(posX, camHeight - posY, 0);
         ImageTargetMsg finalImgMsg = new ImageTargetMsg(
             imgMsg,
             imgPosMsg
         );
+        Debug.Log("ros: " + posX + ", " + posY);
 
         ros.Publish(camFrameTopic, finalImgMsg);
     }

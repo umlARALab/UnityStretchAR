@@ -164,6 +164,10 @@ extern void U3CSelfDestructU3Ed__1_MoveNext_m33884244F845FD9E0B95CCDC882432B17EA
 extern void U3CSelfDestructU3Ed__1_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mF2315E4130129F0240BBF6764038C37B520D8F1A (void);
 extern void U3CSelfDestructU3Ed__1_System_Collections_IEnumerator_Reset_mD177C4C868DED7EF87E97A87829CEA963DB15746 (void);
 extern void U3CSelfDestructU3Ed__1_System_Collections_IEnumerator_get_Current_mF06AC6C8FA0FA6335E0AF00EFBE984B0710B9C96 (void);
+extern void TrajDisplay_Awake_mC3102CC608F71D59397448E281E263CD844577E4 (void);
+extern void TrajDisplay_Start_m7FEDD66E81984D7597F68A626A2070668CD6F5F3 (void);
+extern void TrajDisplay_TrajectoryCallback_m7ED862B857240610D485473FCAC721B7978C88DE (void);
+extern void TrajDisplay__ctor_mB125D91F083FA9B8245EF3D62A435BDFA18770C2 (void);
 extern void Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6 (void);
 extern void Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B (void);
 extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033 (void);
@@ -261,6 +265,14 @@ extern void RobotStatusMsg__ctor_m27D5234F20E40386781BD639D023A98FA87AE7F2 (void
 extern void RobotStatusMsg_SerializeTo_m54D365BA9AA45FDFCBFD31FD35DEC099C138C6B2 (void);
 extern void RobotStatusMsg_ToString_m187C3E8FBC0C611BFAD62FE79A10A6CD9E5CBEE7 (void);
 extern void RobotStatusMsg_Register_mECCA331B64C17935756DAAB4C26D3D54757C2050 (void);
+extern void TrajectoryPlanMsg_get_RosMessageName_m193FCCEEFFC4CEE506A0F500E8FBFE80CA6D11E1 (void);
+extern void TrajectoryPlanMsg__ctor_m2E526308B2D835BF98B0ACE611698706BBF1C7FE (void);
+extern void TrajectoryPlanMsg__ctor_m9C9AF2F61F85848085498D4EDBEAFA676082B7BA (void);
+extern void TrajectoryPlanMsg_Deserialize_m55E6FF933AFCA381F1ACCDB2F96630324185D2C4 (void);
+extern void TrajectoryPlanMsg__ctor_m2DA375074AFBD5648FBA62C4827C3719F1EA19A5 (void);
+extern void TrajectoryPlanMsg_SerializeTo_mEF4B891D3B7C3974C0E99B24ABED41DD6ACFE0FC (void);
+extern void TrajectoryPlanMsg_ToString_mDC952E205C0328D2800E5DBF2C344319B508D759 (void);
+extern void TrajectoryPlanMsg_Register_m705AA7C19886A8EBC6E3C4B4F3833801260C055D (void);
 extern void PassthroughCameraDebugger_DebugMessage_mDAA4F640348117591869BA0699A7D7E0318FB32F (void);
 extern void RequestPermissionsOnce_AfterSceneLoad_mFEBA7CC3A4765C581F627D7A0D1E7E691B2202E5 (void);
 extern void U3CU3Ec__DisplayClass0_0__ctor_m05E3C0CB5D27FF329F5FFA945E82AC5631FBDED7 (void);
@@ -274,7 +286,7 @@ extern void U3CStartU3Ed__3_MoveNext_m4DEB05710C503D5D5DBE2BF1B9C72764DB0511F3 (
 extern void U3CStartU3Ed__3_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mC0CFFBD549BFDE6B5705958D424E262F49FA3A8E (void);
 extern void U3CStartU3Ed__3_System_Collections_IEnumerator_Reset_m96AED7E3363DCF3485D9818864FD602F09F8A0F6 (void);
 extern void U3CStartU3Ed__3_System_Collections_IEnumerator_get_Current_mA79425F85308BE4B483C5DE0A3D689774FBE18F3 (void);
-static Il2CppMethodPointer s_methodPointers[267] = 
+static Il2CppMethodPointer s_methodPointers[279] = 
 {
 	InputManager_get_Instance_m030B0DD031D7FF2780856681D04755F82C83A404,
 	InputManager_set_Instance_m2D46600941C1F16457184503D1A1408017E43A22,
@@ -433,6 +445,10 @@ static Il2CppMethodPointer s_methodPointers[267] =
 	U3CSelfDestructU3Ed__1_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_mF2315E4130129F0240BBF6764038C37B520D8F1A,
 	U3CSelfDestructU3Ed__1_System_Collections_IEnumerator_Reset_mD177C4C868DED7EF87E97A87829CEA963DB15746,
 	U3CSelfDestructU3Ed__1_System_Collections_IEnumerator_get_Current_mF06AC6C8FA0FA6335E0AF00EFBE984B0710B9C96,
+	TrajDisplay_Awake_mC3102CC608F71D59397448E281E263CD844577E4,
+	TrajDisplay_Start_m7FEDD66E81984D7597F68A626A2070668CD6F5F3,
+	TrajDisplay_TrajectoryCallback_m7ED862B857240610D485473FCAC721B7978C88DE,
+	TrajDisplay__ctor_mB125D91F083FA9B8245EF3D62A435BDFA18770C2,
 	Readme__ctor_m69C325C4C171DCB0312B646A9034AA91EA8C39C6,
 	Section__ctor_m5F732533E4DFC0167D965E5F5DB332E46055399B,
 	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBEB95BEB954BB63E9710BBC7AD5E78C4CB0A0033,
@@ -530,6 +546,14 @@ static Il2CppMethodPointer s_methodPointers[267] =
 	RobotStatusMsg_SerializeTo_m54D365BA9AA45FDFCBFD31FD35DEC099C138C6B2,
 	RobotStatusMsg_ToString_m187C3E8FBC0C611BFAD62FE79A10A6CD9E5CBEE7,
 	RobotStatusMsg_Register_mECCA331B64C17935756DAAB4C26D3D54757C2050,
+	TrajectoryPlanMsg_get_RosMessageName_m193FCCEEFFC4CEE506A0F500E8FBFE80CA6D11E1,
+	TrajectoryPlanMsg__ctor_m2E526308B2D835BF98B0ACE611698706BBF1C7FE,
+	TrajectoryPlanMsg__ctor_m9C9AF2F61F85848085498D4EDBEAFA676082B7BA,
+	TrajectoryPlanMsg_Deserialize_m55E6FF933AFCA381F1ACCDB2F96630324185D2C4,
+	TrajectoryPlanMsg__ctor_m2DA375074AFBD5648FBA62C4827C3719F1EA19A5,
+	TrajectoryPlanMsg_SerializeTo_mEF4B891D3B7C3974C0E99B24ABED41DD6ACFE0FC,
+	TrajectoryPlanMsg_ToString_mDC952E205C0328D2800E5DBF2C344319B508D759,
+	TrajectoryPlanMsg_Register_m705AA7C19886A8EBC6E3C4B4F3833801260C055D,
 	PassthroughCameraDebugger_DebugMessage_mDAA4F640348117591869BA0699A7D7E0318FB32F,
 	RequestPermissionsOnce_AfterSceneLoad_mFEBA7CC3A4765C581F627D7A0D1E7E691B2202E5,
 	U3CU3Ec__DisplayClass0_0__ctor_m05E3C0CB5D27FF329F5FFA945E82AC5631FBDED7,
@@ -632,10 +656,10 @@ static Il2CppTokenAdjustorThunkPair s_adjustorThunks[44] =
 	{ 0x06000085, U3CHasQueryableSceneModelU3Ed__8_SetStateMachine_mF99A232BE75550C200EC0A9AB8DFE95948DC30EE_AdjustorThunk },
 	{ 0x06000086, U3CLoadSceneModelU3Ed__6_MoveNext_m3FA7A0C73432092FC95E0F9CC573D36719A5BAFA_AdjustorThunk },
 	{ 0x06000087, U3CLoadSceneModelU3Ed__6_SetStateMachine_m38D453D4498C603F6A436F2E073D1744B39F6F5F_AdjustorThunk },
-	{ 0x060000B5, U3CCreateUnityObjectU3Ed__0_MoveNext_mF2038C710B44456AD6ABF9582B8E0E6FB4F78523_AdjustorThunk },
-	{ 0x060000B6, U3CCreateUnityObjectU3Ed__0_SetStateMachine_m91ACA1C89024285F1848F77CBECBD5A2B4133C2B_AdjustorThunk },
+	{ 0x060000B9, U3CCreateUnityObjectU3Ed__0_MoveNext_mF2038C710B44456AD6ABF9582B8E0E6FB4F78523_AdjustorThunk },
+	{ 0x060000BA, U3CCreateUnityObjectU3Ed__0_SetStateMachine_m91ACA1C89024285F1848F77CBECBD5A2B4133C2B_AdjustorThunk },
 };
-static const int32_t s_InvokerIndices[267] = 
+static const int32_t s_InvokerIndices[279] = 
 {
 	34083,
 	32734,
@@ -796,6 +820,10 @@ static const int32_t s_InvokerIndices[267] =
 	20567,
 	20811,
 	20811,
+	15919,
+	20811,
+	20811,
+	20811,
 	34230,
 	20811,
 	20567,
@@ -891,6 +919,14 @@ static const int32_t s_InvokerIndices[267] =
 	15919,
 	20567,
 	34188,
+	20567,
+	20811,
+	15919,
+	32223,
+	15919,
+	15919,
+	20567,
+	34188,
 	29096,
 	34188,
 	20811,
@@ -909,7 +945,7 @@ IL2CPP_EXTERN_C const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule;
 const Il2CppCodeGenModule g_AssemblyU2DCSharp_CodeGenModule = 
 {
 	"Assembly-CSharp.dll",
-	267,
+	279,
 	s_methodPointers,
 	44,
 	s_adjustorThunks,

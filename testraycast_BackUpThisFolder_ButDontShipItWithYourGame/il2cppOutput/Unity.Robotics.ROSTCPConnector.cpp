@@ -514,7 +514,6 @@ IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t45433370C70536
 IL2CPP_EXTERN_C RuntimeField* U3CPrivateImplementationDetailsU3E_t45433370C7053650AECDFDEA34433615BE89CA98____C4569305EFBE12991C7CA0A08FC42B8F94510433075286AF17B7B01C0C0E3C84_FieldInfo_var;
 IL2CPP_EXTERN_C String_t* _stringLiteral0551A6B5882D29E66A190E28F0957D424A8B88CA;
 IL2CPP_EXTERN_C String_t* _stringLiteral0753E217C00B63DAC18077B0D8A67165109E8BF5;
-IL2CPP_EXTERN_C String_t* _stringLiteral0BCCC26E81B71E91933EA69075327EAE8848F2F6;
 IL2CPP_EXTERN_C String_t* _stringLiteral0C59304282DDBBF3CFC9A5CF1430EF79DC77D457;
 IL2CPP_EXTERN_C String_t* _stringLiteral0C76A881AB254AF1FFD9FEE8C1F237E458985C4F;
 IL2CPP_EXTERN_C String_t* _stringLiteral0D76EEAA741F75B2612030CD673EEDC2C19CCFA5;
@@ -539,6 +538,7 @@ IL2CPP_EXTERN_C String_t* _stringLiteral31B7122191DC7103FB981F7913C9899DD433226A
 IL2CPP_EXTERN_C String_t* _stringLiteral353D32E8D7BC623E2BBEA46AAD31F73F9B002E0D;
 IL2CPP_EXTERN_C String_t* _stringLiteral3833F7AEC492E9B13522CC39BB90E8300610029F;
 IL2CPP_EXTERN_C String_t* _stringLiteral3B112886BACDC3993EF25767CC07FA177A22A266;
+IL2CPP_EXTERN_C String_t* _stringLiteral3B1C6706397AECA83E591ADD6AD9CEDE4B515FF8;
 IL2CPP_EXTERN_C String_t* _stringLiteral3B5B4700DFFCE53FFB81288D310D59921A9F8493;
 IL2CPP_EXTERN_C String_t* _stringLiteral3DCC6243286938BE75C3FA773B9BA71160A2E869;
 IL2CPP_EXTERN_C String_t* _stringLiteral3DD8951DA84B68D5B2FE0879AA1C22DF22738BFE;
@@ -12573,14 +12573,14 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void ROSConnection__ctor_m5D25D49EDB6F070850C
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&OutgoingMessageQueue_t89C303906518ACD0BB070A69DA860B46CAECC974_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&RuntimeObject_il2cpp_TypeInfo_var);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&StringU5BU5D_t7674CD946EC0CE7B3AE0BE70E6EE85F2ECD9F248_il2cpp_TypeInfo_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral0BCCC26E81B71E91933EA69075327EAE8848F2F6);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteral3B1C6706397AECA83E591ADD6AD9CEDE4B515FF8);
 		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&_stringLiteralE28D110349FA6C72844849991F49368B76626070);
 		s_Il2CppMethodInitialized = true;
 	}
 	{
 		//<source_info:./Library/PackageCache/com.unity.robotics.ros-tcp-connector@bdad6c87bd9e/Runtime/TcpConnector/ROSConnection.cs:25>
-		__this->___m_RosIPAddress = _stringLiteral0BCCC26E81B71E91933EA69075327EAE8848F2F6;
-		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_RosIPAddress), (void*)_stringLiteral0BCCC26E81B71E91933EA69075327EAE8848F2F6);
+		__this->___m_RosIPAddress = _stringLiteral3B1C6706397AECA83E591ADD6AD9CEDE4B515FF8;
+		Il2CppCodeGenWriteBarrier((void**)(&__this->___m_RosIPAddress), (void*)_stringLiteral3B1C6706397AECA83E591ADD6AD9CEDE4B515FF8);
 		//<source_info:./Library/PackageCache/com.unity.robotics.ros-tcp-connector@bdad6c87bd9e/Runtime/TcpConnector/ROSConnection.cs:31>
 		__this->___m_RosPort = ((int32_t)10000);
 		//<source_info:./Library/PackageCache/com.unity.robotics.ros-tcp-connector@bdad6c87bd9e/Runtime/TcpConnector/ROSConnection.cs:35>
